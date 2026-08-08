@@ -9,3 +9,7 @@ dist
 .DS_Store
 *.local
 *.log
+
+# cloudflare / wrangler
+.wrangler
+.dev.vars

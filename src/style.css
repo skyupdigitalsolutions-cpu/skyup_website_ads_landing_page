@@ -186,3 +186,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
   .tick,.tick-c,.tick-m{animation:none}
   .tick-c,.tick-m{stroke-dashoffset:0}
 }
+
+/* honeypot — hidden anti-spam field, never shown to real users */
+.hp{position:absolute!important;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none}

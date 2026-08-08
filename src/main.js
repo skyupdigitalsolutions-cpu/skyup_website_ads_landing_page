@@ -234,20 +234,35 @@ document.getElementById('toStep2').onclick = () => {
   f1.style.display = 'none'; f2.style.display = 'block'
 }
 document.getElementById('backStep1').onclick = () => { f2.style.display = 'none'; f1.style.display = 'block' }
-document.getElementById('submitForm').onclick = () => {
+document.getElementById('submitForm').onclick = async () => {
   const name = document.getElementById('f-name').value.trim()
   const business = document.getElementById('f-business').value.trim()
   const phone = document.getElementById('f-phone').value.trim()
   if (!name || !phone) { alert('Please add your name and phone/WhatsApp number so we can reach you.'); return }
   const budget = document.getElementById('f-budget').value
   const timeline = document.getElementById('f-timeline').value
+  const hp = (document.getElementById('f-hp') || {}).value || ''
+
+  const btn = document.getElementById('submitForm')
+  const label = btn.textContent
+  btn.disabled = true; btn.textContent = 'Sending…'
+
+  // WhatsApp fallback (also a backup capture path if the API ever fails)
   const msg = encodeURIComponent(
     `Hi SkyUp, I'd like an interactive website for my business.\n` +
     `Name: ${name}\nBusiness: ${business || '—'}\nBudget: ${budget}\nStart: ${timeline}`
   )
-  // SkyUp WhatsApp CTA number — change here if you route this campaign elsewhere
   document.getElementById('waBtn').href = `https://wa.me/918867867775?text=${msg}`
-  // TODO: POST { name, business, phone, budget, timeline } to CRM webhook here
+
+  try {
+    await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name, business, phone, budget, timeline, source: 'ads-landing', company_website: hp })
+    })
+  } catch (_) { /* still show thanks — WhatsApp link is the backup */ }
+
+  btn.disabled = false; btn.textContent = label
   f2.style.display = 'none'; ft.style.display = 'block'
 }
 

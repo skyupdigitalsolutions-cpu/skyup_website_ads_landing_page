@@ -1,12 +1,29 @@
 {
-  // Static-assets deploy: wrangler serves the built `dist` folder directly.
-  // Because this config exists, wrangler skips framework auto-config
-  // (which otherwise demands Vite >= 6.0.0).
+  // Landing page (static assets) + lead-capture Worker in one deploy.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "skyup-website-ads-landing-page",
   "compatibility_date": "2026-08-08",
+
+  // Worker entry (handles /api/*). Everything else is served from ./dist.
+  "main": "src/worker.js",
+
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Only /api/* hits the Worker; all other paths serve the static site.
+    "run_worker_first": ["/api/*"]
+  },
+
+  // Leads database. Create it, then paste the id below:
+  //   npx wrangler d1 create skyup-leads
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "skyup-leads",
+      "database_id": "REPLACE_WITH_YOUR_D1_ID"
+    }
+  ],
+
+  "observability": { "enabled": true }
 }
