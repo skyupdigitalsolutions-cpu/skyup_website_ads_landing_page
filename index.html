@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>SkyUp Interactive Web — a website that feels different</title>
+<meta name="description" content="SkyUp builds custom interactive websites designed around your business, audience and goals. Not another template — an interactive digital experience." />
+</head>
+<body>
+
+<div id="stage"></div>
+<div id="veil"></div>
+<div id="flash"></div>
+
+<div id="spacer"></div>
+
+<div id="hud">
+  <div class="tl">
+    <a class="brandlink" href="https://skyupdigitalsolutions.com/" target="_blank" rel="noopener" aria-label="SkyUp — visit our website">
+      <img id="logo" src="%BASE_URL%skyup-logo.png" alt="SkyUp" width="351" height="115" />
+    </a>
+  </div>
+  <div class="tr">
+    <a id="visit" href="https://skyupdigitalsolutions.com/" target="_blank" rel="noopener">Visit website <span class="ar">&#8599;</span></a>
+    <b id="sys">ENTER</b>
+  </div>
+  <div id="power">
+    <div class="lbl"><span>Experience</span><b id="pct">0%</b></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+</div>
+
+<div id="cue"><span>Scroll to experience</span><span class="ln"></span></div>
+
+<div id="beats">
+  <div class="beat on" id="b0"><div class="wrap">
+    <div class="eyebrow">SkyUp Interactive Web</div>
+    <h1>Your business deserves<br>a website that feels <em>different.</em></h1>
+    <p>Not another template. An interactive digital experience built around your brand.</p>
+  </div></div>
+
+  <div class="beat" id="b1"><div class="wrap">
+    <div class="eyebrow">Most websites inform</div>
+    <h2>But great websites make<br>people <em>explore.</em></h2>
+    <p>When visitors interact with your website, they don't just read about your business — they experience it.</p>
+  </div></div>
+
+  <div class="beat" id="b2"><div class="wrap">
+    <div class="eyebrow">Designed to interact</div>
+    <h2>Every scroll can tell<br>your <em>business story.</em></h2>
+    <p>Motion. 3D visuals. Interactive sections — built to make your products and services easier to discover.</p>
+  </div></div>
+
+  <div class="beat" id="b3"><div class="wrap">
+    <div class="eyebrow">Beyond good design</div>
+    <h2>Turn attention into<br><em>business interest.</em></h2>
+    <p>Help visitors understand your offer, explore your services and move naturally towards an enquiry.</p>
+  </div></div>
+
+  <div class="beat" id="b4"><div class="wrap">
+    <div class="eyebrow">Built for serious businesses</div>
+    <h2>Ready for a website that<br><em>matches your growth?</em></h2>
+    <p>Custom interactive websites designed around your business, audience and goals.</p>
+    <div class="price">Projects from ₹50,000 – ₹3,00,000</div>
+  </div></div>
+
+  <div class="beat" id="b5"><div class="wrap">
+    <div class="eyebrow alt">Your next website starts here</div>
+    <h2>Imagine this experience<br><em>built for your business.</em></h2>
+    <p>Tell us what you're planning. We'll recommend the right structure, interactive features, timeline and investment.</p>
+  </div></div>
+
+  <div class="beat" id="bForm"><div class="wrap formcard">
+    <div id="fstep1">
+      <div class="eyebrow alt">Website strategy call</div>
+      <h3>Plan my website.</h3>
+      <div class="sub">Two quick questions and we'll shape the right approach.</div>
+      <div class="field"><label>Expected project budget</label>
+        <select id="f-budget">
+          <option value="">Select…</option>
+          <option>₹50,000 – ₹1,00,000</option>
+          <option>₹1,00,000 – ₹2,00,000</option>
+          <option>₹2,00,000 – ₹3,00,000</option>
+          <option>Above ₹3,00,000</option>
+        </select>
+      </div>
+      <div class="field"><label>When are you planning to start?</label>
+        <select id="f-timeline">
+          <option value="">Select…</option>
+          <option>Immediately</option>
+          <option>Within 1–15 days</option>
+          <option>Within 15–30 days</option>
+        </select>
+      </div>
+      <button class="btn full" id="toStep2">Continue <span class="arw">&rarr;</span></button>
+    </div>
+    <div id="fstep2" style="display:none">
+      <div class="eyebrow alt">Almost there</div>
+      <h3>Where do we reach you?</h3>
+      <div class="sub">One message and we'll take it from there.</div>
+      <div class="field"><label>Full name</label><input id="f-name" placeholder="Your name"></div>
+      <div class="field"><label>Business name</label><input id="f-business" placeholder="Your business"></div>
+      <div class="field"><label>Phone / WhatsApp number</label><input id="f-phone" placeholder="+91 …" inputmode="tel"></div>
+      <div class="rowbtns">
+        <button class="btn ghost" id="backStep1">&larr; Back</button>
+        <button class="btn" id="submitForm">Request strategy call</button>
+      </div>
+      <p class="micro">Custom projects start from ₹50,000. By submitting, you agree to be contacted by SkyUp Digital Solutions.</p>
+    </div>
+    <div id="fthanks" style="display:none">
+      <div class="eyebrow alt">Received</div>
+      <h3>Thank you.</h3>
+      <div class="sub">We'll review your plans and come back with the right structure, features, timeline and investment.</div>
+      <a class="btn full" id="waBtn" target="_blank" rel="noopener">Continue on WhatsApp <span class="arw">&rarr;</span></a>
+    </div>
+  </div></div>
+</div>
+
+<button id="fab">Plan my website <span class="arw">&rarr;</span></button>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
