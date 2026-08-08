@@ -21,7 +21,7 @@
     {
       "binding": "DB",
       "database_name": "skyup-leads",
-      "database_id": "66eab627-0493-407e-8d87-f04f6f16077e"
+      "database_id": "REPLACE_WITH_YOUR_D1_ID"
     }
   ],
 
