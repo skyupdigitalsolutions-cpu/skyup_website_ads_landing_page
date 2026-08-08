@@ -124,6 +124,8 @@ canvas{display:block}
 /* hero centred */
 #b0{text-align:center}
 #b0 .wrap{max-width:640px}
+/* description below the headline reads left-aligned, not centred */
+#b0 p{text-align:left;margin-inline:auto}
 #b0 .eyebrow{justify-content:center}
 #b0 .eyebrow::before,#b0 .eyebrow::after{content:"";width:22px;height:1px;background:var(--cyan);opacity:.7}
 

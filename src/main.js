@@ -136,7 +136,8 @@ function ui (p) {
   const idx = zone(p)
   if (idx !== lastIdx) {
     beats.forEach((b, k) => b.classList.toggle('on', k === idx))
-    sys.textContent = SYS[idx]; lastIdx = idx
+    if (sys) sys.textContent = SYS[idx]
+    lastIdx = idx
   }
   const pc = Math.round(p * 100)
   if (pc !== lastPct) { pct.textContent = pc + '%'; fill.style.width = pc + '%'; lastPct = pc }
