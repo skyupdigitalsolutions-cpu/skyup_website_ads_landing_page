@@ -226,6 +226,10 @@ addEventListener('resize', () => {
 })
 
 /* ---------- enquiry form (inline finale) ---------- */
+// Backend API base. Leave '' if the API is same-origin; set to your Railway URL
+// when the backend is deployed separately, e.g. 'https://skyup-leads-backend-production.up.railway.app'
+const API_BASE = 'https://skyupwebsitelandingpageadsbackend-production.up.railway.app'
+
 const f1 = document.getElementById('fstep1'), f2 = document.getElementById('fstep2'), ft = document.getElementById('fthanks')
 document.getElementById('toStep2').onclick = () => {
   const budget = document.getElementById('f-budget').value
@@ -255,7 +259,7 @@ document.getElementById('submitForm').onclick = async () => {
   document.getElementById('waBtn').href = `https://wa.me/918867867775?text=${msg}`
 
   try {
-    await fetch('/api/lead', {
+    await fetch(API_BASE + '/api/lead', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ name, business, phone, budget, timeline, source: 'ads-landing', company_website: hp })
