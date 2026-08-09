@@ -238,17 +238,28 @@ document.getElementById('toStep2').onclick = () => {
   f1.style.display = 'none'; f2.style.display = 'block'
 }
 document.getElementById('backStep1').onclick = () => { f2.style.display = 'none'; f1.style.display = 'block' }
+// Prevent double-submit: track in-flight state and submitted phones for this session
+const _submittedPhones = new Set()
+let _submitting = false
+
 document.getElementById('submitForm').onclick = async () => {
+  if (_submitting) return
+
   const name = document.getElementById('f-name').value.trim()
   const business = document.getElementById('f-business').value.trim()
   const phone = document.getElementById('f-phone').value.trim()
   if (!name || !phone) { alert('Please add your name and phone/WhatsApp number so we can reach you.'); return }
+
+  // Already submitted this phone this session — just show thanks
+  if (_submittedPhones.has(phone)) { f2.style.display = 'none'; ft.style.display = 'block'; return }
+
   const budget = document.getElementById('f-budget').value
   const timeline = document.getElementById('f-timeline').value
   const hp = (document.getElementById('f-hp') || {}).value || ''
 
   const btn = document.getElementById('submitForm')
   const label = btn.textContent
+  _submitting = true
   btn.disabled = true; btn.textContent = 'Sending…'
 
   // WhatsApp fallback (also a backup capture path if the API ever fails)
@@ -264,8 +275,10 @@ document.getElementById('submitForm').onclick = async () => {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ name, business, phone, budget, timeline, source: 'ads-landing', company_website: hp })
     })
+    _submittedPhones.add(phone)
   } catch (_) { /* still show thanks — WhatsApp link is the backup */ }
 
+  _submitting = false
   btn.disabled = false; btn.textContent = label
   f2.style.display = 'none'; ft.style.display = 'block'
 }
